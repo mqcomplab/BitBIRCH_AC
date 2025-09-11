@@ -273,16 +273,25 @@ class FingerprintClusterAnalyzer:
         
         try:
             # Generate SVG grid image
-            svg_str = Draw.MolsToGridImage(
+            svg_result = Draw.MolsToGridImage(
                 molecules,
-                molsPerRow=3,
-                subImgSize=(200, 200),
+                molsPerRow=4,
+                subImgSize=(400, 400),
                 legends=legends,
                 useSVG=True   # <-- IMPORTANT
+
             )
+
+            # FIX: Handle the SVG object properly
+            if hasattr(svg_result, 'data'):
+                svg_str = svg_result.data  # Extract string from SVG object
+            else:
+                svg_str = str(svg_result)  # Convert to string
             
-            # Display inline (Jupyter/IPython)
+            # Now you can use svg_str safely
             display(SVG(svg_str))
+            
+        
             
             # Show cluster info separately with matplotlib
             plt.figure(figsize=(16, 1))
