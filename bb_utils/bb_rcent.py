@@ -1,27 +1,31 @@
 # BitBIRCH is an open-source clustering module based on iSIM
 #
-# Please, cite the BitBIRCH paper: https://www.biorxiv.org/content/10.1101/2024.08.10.607459v1
+# Please, cite the BitBIRCH paper: https://doi.org/10.1039/D5DD00030K
 #
 # BitBIRCH is free software; you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License as published by
+# it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, version 3.
 #
 # BitBIRCH is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Lesser General Public License for more details.
+# GNU General Public License for more details.
 #
-# BitBIRCH authors (PYTHON): Ramon Alain Miranda Quintana <ramirandaq@gmail.com>, <quintana@chem.ufl.edu>
-#                            Vicky (Vic) Jung <jungvicky@ufl.edu>
-#                            Kenneth Lopez Perez <klopezperez@chem.ufl.edu>
+# BitBIRCH License: GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.en.html
 #
-# BitBIRCH License: LGPL-3.0 https://www.gnu.org/licenses/lgpl-3.0.en.html#license-text
+# Activity cliff BitBIRCH authors: Ramon Alain Miranda Quintana <ramirandaq@gmail.com>, <quintana@chem.ufl.edu>
+#                                  Akash Surendran <ak.surendran@ufl.edu>
 #
 ### Part of the tree-management code was derived from https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html
 ### Authors: Manoj Kumar <manojkumarsivaraj334@gmail.com>
 ###          Alexandre Gramfort <alexandre.gramfort@telecom-paristech.fr>
 ###          Joel Nothman <joel.nothman@gmail.com>
 ### License: BSD 3 clause
+# Parts of the BitBIRCH algorithm were previously released under the LGPL-3.0 license by:
+# Ramon Alain Miranda Quintana <ramirandaq@gmail.com>, <quintana@chem.ufl.edu>
+# Vicky (Vic) Jung <jungvicky@ufl.edu>
+# Kenneth Lopez Perez <klopezperez@chem.ufl.edu>
+# Kate Huddleston <kdavis2@chem.ufl.edu>
 
 import numpy as np
 from scipy import sparse
