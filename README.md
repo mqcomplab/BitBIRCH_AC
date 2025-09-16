@@ -104,7 +104,7 @@ analyzer = FingerprintClusterAnalyzer(
     )
 
 # Load data and perform clustering
-analyzer.load_fingerprint_data(data_prefix='files/fps_CHEMBL4005_Ki_fp_', prop_prefix='files/props_CHEMBL4005_Ki_fp_') 
+analyzer.load_fingerprint_data(data_prefix='CHEMBL4005_Ki_fp', prop_prefix='CHEMBL4005_Ki_fp') 
 analyzer.perform_clustering()
 analyzer.save_results_to_csv(filename='results/clustering_results_CHEMBL4005_Ki.csv')
 
