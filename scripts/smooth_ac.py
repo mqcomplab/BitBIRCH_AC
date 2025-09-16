@@ -1,4 +1,4 @@
-'''Main code for generating smooth clusters and visualizations. Use the following functions:
+'''Main code for generating smooth clusters and visualizations for a given dataset. Use the following functions:
 
 - FingerprintClusterAnalyzer: Main class to handle clustering and visualization for different fingerprint types
 - load_fingerprint_data: Load fingerprint and property data
@@ -461,4 +461,5 @@ analyzer.visualize_molecules('ECFP', 0.9, 0, smiles_file)
 
 # Compare all fingerprint types
 analyzer.compare_fingerprint_types(0.9, 0, smiles_file)
+
 """
