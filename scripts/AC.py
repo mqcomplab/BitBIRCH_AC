@@ -30,12 +30,6 @@ from sklearn.metrics import pairwise_distances
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import argparse
 
-
-# Candidate BB AC implementations
-bb_options = ['bb_ac_minmax', 'bb_int_minmax', 'bb_rcent_minmax']
-
-# bb_ac_minmax: Traditional BB, just with added support to handle properties
-# bb_int_minmax: The "centroid" information contains the linear sum of the cluster
 # bb_rcent_minmax: Real centroids are used: linear_sum/n_mols
 
 # Choose a BB AC implementation:
@@ -48,9 +42,6 @@ offsets= [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]  # Offset for the threshold
 # Similarity threshold to calculate ACs
 threshold = np.arange(0.90, 1.00, 0.01)  # [0.90, 0.91, ..., 0.99]
 tani_files = glob.glob(os.path.join(input, 'tani_matrix_*.npy'))
-
-'''I was really clumsy while naming the files based on used of offset, order and recursion 
-so I have tried to automate the flow'''
 
 def parse_arguments():
 
@@ -75,7 +66,7 @@ def parse_arguments():
     return parser.parse_args()
 
 
-'''Now this can generate a filename based on the parameters provided, so that I don't have to manually change the filename everytime'''
+'''This can generate a filename based on the parameters provided'''
 def generate_filename(order_method, use_offsets, recursive):
      '''Generates a filename based on the provided parameters.'''
 
@@ -181,7 +172,6 @@ def process_tani_file(tani_path, th, offset, order_method, recursive):
             bb_ac_inds += inds_found
     
     print('One run:', n_acs_bb, n_acs, "Threshold:", th, "Suffix:", suffix)
-    # (recursive part omitted for brevity, add if needed)
     
     if recursive:
          # Load fps
@@ -277,4 +267,5 @@ if __name__ == "__main__":
                df.to_csv(csv_path, mode='a', header=False, index=False)
            else:
                df.to_csv(csv_path, index=False)
+
            print(df)
