@@ -14,7 +14,7 @@
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from bb_utils import bb_ac_new
+from bb_utils import bb_ac
 import numpy as np
 import pandas as pd
 from rdkit import Chem
@@ -73,13 +73,13 @@ class FingerprintClusterAnalyzer:
                 print(f"  Threshold: {th}")
                 
                 # Activity cliffs clustering
-                bb_ac_new.activity_cliffs = True
-                brc_cliff = bb_ac_new.BitBirch(threshold=th)
+                bb_ac.activity_cliffs = True
+                brc_cliff = bb_ac.BitBirch(threshold=th)
                 brc_cliff.fit(fps, props)
                 
                 # Smooth clustering
-                bb_ac_new.activity_cliffs = False
-                brc_smooth = bb_ac_new.BitBirch(threshold=th)
+                bb_ac.activity_cliffs = False
+                brc_smooth = bb_ac.BitBirch(threshold=th)
                 brc_smooth.fit(fps, props)
                 
                 cliff_ids = brc_cliff.get_cluster_mol_ids()
