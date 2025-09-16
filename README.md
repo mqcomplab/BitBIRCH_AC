@@ -113,7 +113,7 @@ analyzer.compare_fingerprint_types(0.9, 1, smiles_file, max_molecules=20) # Visu
 ```
 ## Notebooks
 
-Further details of the code can be found in the `tutorial2.ipynb` notebook.
+Further details of the code can be found in the `Tutorial.ipynb` notebook.
 
 ## Citation
 
