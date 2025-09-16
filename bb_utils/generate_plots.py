@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # Load both CSV files
 
-def plot_overall_comparison(df1, df2, offset1, offset2):
+def plot_overall_comparison(df1, df2, offset1, offset2): #To plot overall comparison across different/same offsets for different/same dataset. 
 
     # Remove the rows where ratio is -1
     df1 = df1[df1['ratio'] != -1]
@@ -71,7 +71,7 @@ def plot_overall_comparison(df1, df2, offset1, offset2):
     plt.show()
     plt.close()
 
-def plot_by_threshold(df, offset, output_file):
+def plot_by_threshold(df, offset, output_file): # To check the efficiency of AC retrieval for a dataset across different thresholds.
 
     df = df[df['ratio'] != -1]
     df = df[(df['offset']==offset)]
@@ -109,7 +109,7 @@ def plot_by_threshold(df, offset, output_file):
     plt.close()
 
 
-def plot_comparison_by_threshold(df1, df2, offset1, offset2):
+def plot_comparison_by_threshold(df1, df2, offset1, offset2): # To compare the AC retrieval performance across different/same dataset at different/same offset.
 
     df1 = df1[df1['ratio'] != -1]
     df2 = df2[df2['ratio'] != -1]
@@ -173,7 +173,7 @@ def plot_comparison_by_threshold(df1, df2, offset1, offset2):
     plt.show()
     plt.close()
 
-def plot_num_molecule(df, fps=['ECFP', 'MACCS', 'RDKIT']): #Offset is not used now
+def plot_num_molecule(df, fps=['ECFP', 'MACCS', 'RDKIT']): #Number of molecules in the top clusters
     
 
     colors=plt.cm.viridis
@@ -200,7 +200,7 @@ def plot_num_molecule(df, fps=['ECFP', 'MACCS', 'RDKIT']): #Offset is not used n
         plt.savefig(f'Plots/Smooth/cluster_size_vs_number_{fp}.png', dpi=300)
         plt.show()
 
-def plot_prop_std(df, fps=['ECFP', 'MACCS', 'RDKIT']): #Offset is not used now
+def plot_prop_std(df, fps=['ECFP', 'MACCS', 'RDKIT']): # Property standard deviation in top clusters
         colors=plt.cm.viridis
 
         for fp in fps:

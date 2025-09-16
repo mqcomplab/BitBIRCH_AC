@@ -40,8 +40,6 @@ bb_options = ['bb_ac_minmax', 'bb_int_minmax', 'bb_rcent_minmax']
 
 # Choose a BB AC implementation:
 import bb_utils.bb_rcent as bb
-import bb_utils.bb_int as bb_int
-import bb_utils.bb_ac as bb_ac
 
 # Finding exact ACs
 input = 'files'
