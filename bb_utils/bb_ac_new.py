@@ -21,7 +21,7 @@
 ###          Alexandre Gramfort <alexandre.gramfort@telecom-paristech.fr>
 ###          Joel Nothman <joel.nothman@gmail.com>
 ### License: BSD 3 clause
-# Parts of the BitBIRCH algorithm were previously released under the LGPL-3.0 license by: 
+# Parts of the BitBIRCH algorithm were previously released under the LGPL-3.0 license by:
 # Ramon Alain Miranda Quintana <ramirandaq@gmail.com>, <quintana@chem.ufl.edu>
 # Vicky (Vic) Jung <jungvicky@ufl.edu>
 # Kenneth Lopez Perez <klopezperez@chem.ufl.edu>
