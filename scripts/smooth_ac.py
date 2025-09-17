@@ -413,7 +413,7 @@ def main():
     
     # Load data and perform clustering
     print("Loading fingerprint data...")
-    analyzer.load_fingerprint_data(data_prefix=CHEMBL234_Ki_fp', prop_prefix='CHEMBL234_Ki_fp') # Loads hardcoded files, please change accordingly. Add the fps and props prefix as shown in the function definition.
+    analyzer.load_fingerprint_data(data_prefix='CHEMBL234_Ki_fp', prop_prefix='CHEMBL234_Ki_fp') # Loads hardcoded files, please change accordingly. Add the fps and props prefix as shown in the function definition.
     
     print("\nPerforming clustering...")
     analyzer.perform_clustering() # Perform clustering for all fingerprint types and thresholds
