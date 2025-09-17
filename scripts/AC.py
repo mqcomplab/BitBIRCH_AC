@@ -36,8 +36,13 @@ import argparse
 import bb_utils.bb_rcent as bb
 
 # Finding exact ACs
-input = 'files'
-output = 'results'
+from pathlib import Path
+
+parent_dir = Path(__file__).resolve().parent.parent
+
+input_dir = parent_dir / "files"
+output = parent_dir / "results"
+
 offsets= [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]  # Offset for the threshold
 # Similarity threshold to calculate ACs
 threshold = np.arange(0.90, 1.00, 0.01)  # [0.90, 0.91, ..., 0.99]
@@ -151,8 +156,10 @@ def process_tani_file(tani_path, th, offset, order_method, recursive):
        makes the BitBIRCH tree then finds clusters, counts ACs in each cluster.
        If recursion is enabled, it removes found ACs and re-runs on remaining molecules.'''
 
-    fps = np.load(f'files/fps_{suffix}.npy')
-    props = np.load(f'files/props_{suffix}.npy')
+    fps_path = os.path.join(input_dir,f'fps_{suffix}.npy')
+    props_path = os.path.join(input_dir, f'props_{suffix}.npy')
+    fps=np.load(fps_path)
+    props=np.load(props_path)
     brc = bb.BitBirch(branching_factor=50, threshold=th-offset)
     new_order = set_order(fps, order_method)
     fps = fps[new_order]

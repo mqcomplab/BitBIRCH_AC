@@ -9,13 +9,14 @@ import time
 import pickle 
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+from pathlib import Path
 
 ###########################################################
 # Generation of RDKit fingerprints from SMILES ############
 ###########################################################
 
-input_path = 'data'  # Path to the folder containing the CSV files
+parent_dir = Path(__file__).resolve().parent.parent
+input_path = parent_dir / "data"
 
 # Reading data bases 
 for file in glob.glob(os.path.join(input_path, '*CHEMBL*.csv')):
@@ -68,6 +69,10 @@ for file in glob.glob(os.path.join(input_path, '*CHEMBL*.csv')):
          'MACCS': fp_maccs,
          }
 
- with open(name + '_fp.pkl', 'wb') as f:
-  pickle.dump(data, f)
+ output_file = os.path.join(parent_dir/'pkl', os.path.basename(name) + '_fp.pkl')
+ print(f"Saving fingerprints to: {output_file}")
+ with open(output_file, 'wb') as f:
+     pickle.dump(data, f)
+ 
+ print(f"Completed processing {os.path.basename(file)}\n")
 
