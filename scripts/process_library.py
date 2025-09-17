@@ -10,8 +10,9 @@ def pair_sim(mol1, mol2):
     return np.dot(mol1, mol2) / (np.dot(mol1, mol1) + np.dot(mol2, mol2) - np.dot(mol1, mol2))
 
 # Specify input and output directories
-input_dir = 'pkl'
-output_dir = 'files'
+parent_dir = Path(__file__).resolve().parent.parent
+input_dir = parent_dir / "pkl"
+output_dir = parent_dir / "files"
 os.makedirs(output_dir, exist_ok=True)
 
 # List of fingerprint types
