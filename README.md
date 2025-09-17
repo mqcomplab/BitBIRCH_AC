@@ -33,7 +33,7 @@ This also requires the BitBIRCH module, installation instructions can be found i
 ### Setup
 1. Clone the repository:
 ```bash
-git clone https://github.com/Ak-Sure/BitBIRCH_AC.git
+git clone https://github.com/mqcomplab/BitBIRCH_AC.git
 cd BitBIRCH_AC
 ```
 ## Quick Start
