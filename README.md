@@ -2,6 +2,8 @@
 
 This repository provides a comprehensive toolkit for identifying and analyzing activity cliffs in molecular datasets using BitBIRCH clustering algorithms.
 
+Paper: https://www.biorxiv.org/content/10.1101/2025.09.17.676791v1
+
 | (a) Diameter BitBIRCH cluster (contains Activity Cliffs) | (b) Smooth clusters (No Activity Cliffs) |
 |:---------------:|:----------------:|
 | <div style="background-color: #dbeafe; padding:10px; border-radius:8px;"> <img src="Images/cliff_cluster.png" width="100%"/> </div> | <div style="background-color: #d1fae5; padding:10px; border-radius:8px;"> <img src="Images/smooth_cluster.png" width="100%"/> </div> |
