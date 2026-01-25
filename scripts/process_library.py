@@ -5,6 +5,7 @@ and property difference matrices.'''
 import numpy as np
 import pandas as pd
 import os
+from pathlib import Path
 
 def pair_sim(mol1, mol2):
     return np.dot(mol1, mol2) / (np.dot(mol1, mol1) + np.dot(mol2, mol2) - np.dot(mol1, mol2))
@@ -47,4 +48,5 @@ for library in os.listdir(input_dir):
                         sim_matrix[-1].append(pair_sim(fps[i], fps[j]))
 
             np.save(os.path.join(output_dir, f'tani_matrix_{name}_{fp_type}.npy'), sim_matrix)
+
             np.save(os.path.join(output_dir, f'prop_diff_matrix_{name}_{fp_type}.npy'), prop_matrix)
