@@ -46,7 +46,7 @@ output = parent_dir / "results"
 offsets= [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]  # Offset for the threshold
 # Similarity threshold to calculate ACs
 threshold = np.arange(0.90, 1.00, 0.01)  # [0.90, 0.91, ..., 0.99]
-tani_files = glob.glob(os.path.join(input, 'tani_matrix_*.npy'))
+tani_files = glob.glob(os.path.join(input_dir, 'tani_matrix_*.npy'))
 
 def parse_arguments():
 
@@ -137,7 +137,7 @@ def process_tani_file(tani_path, th, offset, order_method, recursive):
      
     filename = os.path.basename(tani_path)
     suffix = filename[len('tani_matrix_'):-4]
-    prop_diff_path = os.path.join(input, f'prop_diff_matrix_{suffix}.npy')
+    prop_diff_path = os.path.join(input_dir, f'prop_diff_matrix_{suffix}.npy')
 
     '''Pairwise calculation of ACs
     If both the similarity and property difference conditions are met, then the pair is an AC.'''
@@ -276,3 +276,4 @@ if __name__ == "__main__":
                df.to_csv(csv_path, index=False)
 
            print(df)
+
