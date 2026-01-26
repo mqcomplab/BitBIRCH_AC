@@ -258,7 +258,7 @@ if __name__ == "__main__":
        
            for th in threshold:
                for offset in offsets:
-                   with ProcessPoolExecutor(max_workers=30) as executor:
+                   with ProcessPoolExecutor(max_workers=args.max_workers) as executor:
                        futures = [executor.submit(process_tani_file, tani_path, th, offset, order_method, recursive) for tani_path in tani_files]
                        for future in as_completed(futures):
                            results.append(future.result())
@@ -276,4 +276,5 @@ if __name__ == "__main__":
                df.to_csv(csv_path, index=False)
 
            print(df)
+
 
