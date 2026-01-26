@@ -77,7 +77,7 @@ Perform comprehensive AC analysis with different parameter combinations:
 python AC.py --order increasing_sum --recursive False
 
 # Advanced analysis with multiple configurations
-python AC.py --order increasing_sum increasing_sum_cent --recursive True False --use_offsets --max_workers 20
+python AC.py --order increasing_sum increasing_sum_cent --recursive True --use_offsets --max_workers 20
 ```
 ### Generation and Visualization of Smooth/Cliff Clusters
 
