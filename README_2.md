@@ -146,7 +146,9 @@ A larger offset groups more molecules into the same cluster, potentially recover
 
 ## Smooth Cluster Generation
 
-BitBIRCH can also generate clusters guaranteed to contain no activity cliffs:
+### Standard smooth clustering
+
+BitBIRCH can generate clusters guaranteed to contain no activity cliffs by running with `activity_cliffs = False`:
 
 ```python
 from scripts.smooth_ac import FingerprintClusterAnalyzer
@@ -168,6 +170,62 @@ analyzer.save_results_to_csv('results/clustering_results_CHEMBL4005_Ki.csv')
 # Visualise top cluster at threshold 0.9
 analyzer.compare_fingerprint_types(0.9, 1, 'data/CHEMBL4005_Ki.csv', max_molecules=20)
 ```
+
+### Exhaustive post-hoc smooth clustering (`scripts/smooth_ac_simplified.py`)
+
+An alternative approach first runs **cliff** clustering and then partitions each cliff cluster into smooth sub-clusters by a greedy property-span window. This gives the largest possible smooth regions within an already-clustered dataset.
+
+```python
+from scripts.smooth_ac_simplified import FingerprintClusterAnalyzer
+import numpy as np
+
+analyzer = FingerprintClusterAnalyzer(
+    fingerprint_types=['ECFP', 'MACCS', 'RDKIT'],
+    thresholds=[0.9, 0.95],
+    top=10
+)
+
+analyzer.load_fingerprint_data(
+    data_prefix='CHEMBL4005_Ki_fp',
+    prop_prefix='CHEMBL4005_Ki_fp'
+)
+
+# Partition every cliff cluster into smooth subclusters
+# where max(property) - min(property) <= property_span
+analyzer.perform_exhaustive_posthoc_smooth_clustering(
+    property_span=1.0,    # max property range within a smooth subcluster
+    top_subclusters=20    # keep the top-N largest subclusters per threshold
+)
+
+# Results are stored in analyzer.df_results with columns:
+#   fingerprint_type, threshold, cluster_index,
+#   cliff_nmols, smooth_nmols,
+#   cliff_p_mean, cliff_p_std, smooth_p_mean, smooth_p_std,
+#   smooth_parent_cluster_rank, smooth_prop_range
+print(analyzer.df_results.head())
+```
+
+**How it works:**
+
+1. Fit BitBIRCH in cliff mode to get all cliff clusters.
+2. For each cliff cluster, sort molecules by property value.
+3. Use a greedy left-to-right scan: extend the window while `max − min ≤ property_span`; when the span is exceeded start a new subcluster.
+4. Collect all subclusters across all cliff clusters and keep the `top_subclusters` largest ones as the smooth output.
+
+This is more exhaustive than standard smooth clustering because it searches *inside* cliff clusters rather than running a separate pass over the dataset.
+
+### Maximal smooth interval clustering
+
+A third method finds the single **largest contiguous window** inside each cliff cluster (instead of greedy partitioning):
+
+```python
+analyzer.perform_maximal_smooth_interval_clustering(
+    property_span=1.0,
+    top_n=20    # examine top-20 largest cliff clusters
+)
+```
+
+The result is a single best smooth interval per cluster, useful for identifying the most homogeneous region within a large cliff cluster.
 
 ---
 
