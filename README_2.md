@@ -28,12 +28,10 @@ This repository provides tools for:
 BitBIRCH_AC/
 ├── scripts/
 │   ├── AC.py                          # AC analysis (single dataset, pre-existing .npy files)
-│   ├── AC_OG.py                       # AC analysis with exhaustive pairwise ground truth
 │   ├── benchmarking.py                # End-to-end pipeline: fingerprints → .npy → AC counts
 │   ├── gen_fp.py / gen_fp_parallel.py # Fingerprint generation from CSV
 │   ├── process_library.py / _parallel # Convert .pkl to .npy arrays
 │   ├── smooth_ac.py                   # Smooth cluster generation and analysis
-│   └── plot_ratio_vs_threshold_compare.py  # Standalone comparison plot script
 ├── bb_utils/
 │   ├── bb_rcent.py                    # BitBIRCH implementation (real centroids)
 │   ├── help_funcs.py                  # pair_sim, count_pairs helpers
@@ -108,7 +106,7 @@ Results are saved to `test_benchmarking/results/ac_results_<order>_benchmark.csv
 If you already have `fps_*.npy` / `props_*.npy` arrays in `test_benchmarking/npy/`:
 
 ```bash
-python scripts/AC_OG.py \
+python scripts/AC.py \
     --order increasing_sum \
     --recursive False True \
     --use_offsets \
