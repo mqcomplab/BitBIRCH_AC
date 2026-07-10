@@ -151,7 +151,7 @@ A larger offset groups more molecules into the same cluster, potentially recover
 BitBIRCH can generate clusters guaranteed to contain no activity cliffs by running with `activity_cliffs = False`:
 
 ```python
-from scripts.smooth_ac import FingerprintClusterAnalyzer
+from scripts.smooth_ac_simplified import FingerprintClusterAnalyzer
 import numpy as np
 
 analyzer = FingerprintClusterAnalyzer(
