@@ -251,6 +251,7 @@ plot_comparison_by_threshold(df_recur, df_no_recur, offset1=0.3, offset2=0.3)
 | Notebook | Contents |
 |---|---|
 | `Tutorial.ipynb` | Full walkthrough: fingerprint generation, AC detection, smooth clustering, benchmarking and ratio comparison plots |
+| `Subcluster.ipynb` | Tutorial for smooth subclustering |
 
 ---
 
